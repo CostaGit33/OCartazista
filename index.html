@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="bahiacartaz.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sans+Serif:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div>
+      <!-- Configurações do cartaz -->
+      <div>
+        <label>
+          Nome da Oferta:
+          <input type="text" id="nomeOferta" placeholder="Ex.: Promoção Imperdível" />
+        </label>
+
+        <label>
+          Descrição:
+          <textarea id="descricao" placeholder="Ex.: Produto de alta qualidade"></textarea>
+        </label>
+
+        <label>
+          Preço:
+          <input type="number" id="preco" placeholder="Ex.: 99.99" />
+        </label>
+      </div>
+
+    <!-- Pré-visualização do cartaz -->
+    <div id="cartaz">
+        <h1 id="cartazTitulo"></h1>
+        <p id="cartazDescricao"></p>
+        <div id="cartazPreco">
+        <span id="valorInteiro"></span><span id="valorCentavos"></span>
+        </div>
+    </div>
+    
+
+  <script src="bahiacartaz.js"></script>
+</body>
+</html>
