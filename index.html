@@ -4,37 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="bahiacartaz.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Sans+Serif:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-      <!-- Configurações do cartaz -->
-      <div>
-        <label>
-          Nome da Oferta:
-          <input type="text" id="nomeOferta" placeholder="Ex.: Promoção Imperdível" />
-        </label>
-
-        <label>
-          Descrição:
-          <textarea id="descricao" placeholder="Ex.: Produto de alta qualidade"></textarea>
-        </label>
-
-        <label>
-          Preço:
-          <input type="number" id="preco" placeholder="Ex.: 99.99" />
-        </label>
+  <div class="container">
+    <!-- Painel de Configuração -->
+    <div class="config-panel">
+      <h2>Gerador de Cartazes Artesanais</h2>
+      
+      <div class="form-group">
+        <label for="nomeOferta">Nome da Oferta:</label>
+        <input type="text" id="nomeOferta" placeholder="Ex.: COXINHA DA ASA" />
       </div>
 
-    <!-- Pré-visualização do cartaz -->
-    <div id="cartaz">
-        <h1 id="cartazTitulo"></h1>
-        <p id="cartazDescricao"></p>
-        <div id="cartazPreco">
-        <span id="valorInteiro"></span><span id="valorCentavos"></span>
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" placeholder="Ex.: # FRANGO #"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="preco">Preço:</label>
+          <input type="number" id="preco" placeholder="Ex.: 15.55" step="0.01" />
         </div>
+        <div class="form-group">
+          <label for="unidade">Unidade:</label>
+          <select id="unidade">
+            <option value="KG">KG</option>
+            <option value="UN">UN</option>
+            <option value="L">L</option>
+            <option value="G">G</option>
+            <option value="ML">ML</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="adicionarCartaz">Adicionar Cartaz</button>
+      <button id="limparTodos" class="btn-secondary">Limpar Todos</button>
     </div>
-    
+
+    <!-- Painel de Visualização de Cartazes -->
+    <div class="preview-panel">
+      <div id="cartazesContainer" class="cartazes-grid">
+        <!-- Os cartazes serão adicionados aqui dinamicamente -->
+      </div>
+    </div>
+  </div>
 
   <script src="bahiacartaz.js"></script>
 </body>
