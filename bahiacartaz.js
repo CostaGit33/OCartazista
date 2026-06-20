@@ -74,10 +74,12 @@ class GerenciadorCartazes {
     elementoCartaz.innerHTML = `
       <div class="cartaz-titulo">${this.escaparHTML(cartaz.nome)}</div>
       <div class="cartaz-descricao">${this.escaparHTML(cartaz.descricao)}</div>
-      <div class="cartaz-preco-container">
+      <div class="cartaz-preco-wrapper">
         <span class="cartaz-preco-inteiro">${reais}</span>
-        <span class="cartaz-preco-centavos">,${centavos}</span>
-        <span class="cartaz-unidade">${cartaz.unidade}</span>
+        <div class="cartaz-preco-side">
+          <span class="cartaz-preco-centavos">,${centavos}</span>
+          <span class="cartaz-unidade">${cartaz.unidade}</span>
+        </div>
       </div>
       <div class="cartaz-controls">
         <button class="btn-salvar" onclick="gerenciador.salvarCartazComoImagem(${cartaz.id})">Salvar</button>
@@ -130,7 +132,6 @@ class GerenciadorCartazes {
 
     // Verificar se html2canvas está disponível
     if (typeof html2canvas === 'undefined') {
-      alert('Carregando biblioteca de captura de imagem...');
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
       document.head.appendChild(script);

@@ -163,26 +163,33 @@ button {
 
 .cartazes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
 }
 
 /* ========================================
    ESTILO DO CARTAZ ARTESANAL
-   ======================================== */
+   ========================================
+   
+   Proporções baseadas no modelo real:
+   - Altura: 2x a largura (proporção 1:2)
+   - Preço: ocupa ~60% da altura total
+   - Centavos e unidade: empilhados à direita
+*/
 
 .cartaz {
   background-color: var(--cor-fundo-cartaz);
   border: 4px solid var(--cor-borda);
-  padding: 15px;
-  aspect-ratio: 1 / 1.2;
+  padding: 20px;
+  aspect-ratio: 1 / 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
 .cartaz:hover {
@@ -196,65 +203,80 @@ button {
 
 .cartaz-titulo {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--cor-texto-principal);
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   line-height: 1.1;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-bottom: 8px;
   word-break: break-word;
+  width: 100%;
 }
 
 .cartaz-descricao {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: var(--cor-texto-principal);
   text-transform: uppercase;
-  text-align: center;
-  line-height: 1.3;
-  margin-bottom: 10px;
+  text-align: left;
+  line-height: 1.2;
+  margin-bottom: 15px;
   word-break: break-word;
+  width: 100%;
 }
 
-.cartaz-preco-container {
+/* Container para o preço (flex para alinhar número com centavos/unidade) */
+.cartaz-preco-wrapper {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  gap: 2px;
-  margin-bottom: 8px;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  flex-grow: 1;
 }
 
+/* Número inteiro gigante */
 .cartaz-preco-inteiro {
-  font-size: 3.5rem;
-  font-weight: bold;
+  font-size: 10vw;
+  font-weight: 900;
   color: var(--cor-texto-preco);
-  line-height: 1;
+  line-height: 0.85;
   font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: -2px;
+  flex-shrink: 0;
+  margin-top: -5px;
+}
+
+/* Container para centavos e unidade (empilhados) */
+.cartaz-preco-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+  margin-top: 8px;
 }
 
 .cartaz-preco-centavos {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 2.5vw;
+  font-weight: 900;
   color: var(--cor-texto-preco);
-  align-self: flex-start;
-  margin-top: 8px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
+  line-height: 0.9;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: -1px;
 }
 
 .cartaz-unidade {
-  font-size: 0.75rem;
+  font-size: 1.2vw;
   font-weight: bold;
   color: var(--cor-texto-principal);
   text-transform: uppercase;
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  margin-left: 4px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  letter-spacing: 1px;
 }
 
 /* ========================================
@@ -265,7 +287,8 @@ button {
   width: 100%;
   display: flex;
   gap: 5px;
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 10px;
 }
 
 .btn-remover {
@@ -304,7 +327,19 @@ button {
   }
 
   .cartazes-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .cartaz-preco-inteiro {
+    font-size: 9vw;
+  }
+
+  .cartaz-preco-centavos {
+    font-size: 2.2vw;
+  }
+
+  .cartaz-unidade {
+    font-size: 1vw;
   }
 }
 
@@ -319,28 +354,32 @@ button {
   }
 
   .cartazes-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 15px;
   }
 
   .cartaz {
-    padding: 12px;
+    padding: 15px;
   }
 
   .cartaz-titulo {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   .cartaz-descricao {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .cartaz-preco-inteiro {
-    font-size: 2.5rem;
+    font-size: 8vw;
   }
 
   .cartaz-preco-centavos {
-    font-size: 0.9rem;
+    font-size: 2vw;
+  }
+
+  .cartaz-unidade {
+    font-size: 0.9vw;
   }
 }
 
@@ -354,14 +393,22 @@ button {
   }
 
   .cartaz {
-    padding: 10px;
+    padding: 12px;
   }
 
   .cartaz-titulo {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .cartaz-preco-inteiro {
-    font-size: 2rem;
+    font-size: 7vw;
+  }
+
+  .cartaz-preco-centavos {
+    font-size: 1.8vw;
+  }
+
+  .cartaz-unidade {
+    font-size: 0.8vw;
   }
 }
